@@ -36,7 +36,7 @@ var goods = [['Рубашка мужская', 2, 1000], ['Рубашка жен
 function countBasketPrice(arr){
     var count = 0;
     for(var i = 0; i < arr.length; i++){
-        count = count + goods[i][1]*goods[i][2];
+        count = count + arr[i][1]*arr[i][2];
     }
     console.log(count);
 }
