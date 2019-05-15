@@ -7,7 +7,7 @@
     <title>Lesson5 - JS</title>
     <style>
     
-        table {
+        table, .basket, .catalog {
             margin: 15px;
             border-collapse: collapse;
         }
@@ -32,15 +32,16 @@
         .title {
             font-weight: bold;
         }
-
-        .basket {
-            margin: 15px;
-        }
+        
     </style>
 </head>
 <body>
     <div class="board" id="board"></div>
+    <hr>
     <div class="basket" id="basket"></div>
+    <div class="basket" id="basket-null"></div>
+    <hr>
+    <div class="catalog" id="catalog"></div>
 
 
 
@@ -96,9 +97,70 @@
 
         // BASKET
 
+    var basket = [
+        {
+            name: 'Рубашка мужская',
+            quantity: 2,
+            price: 1000,
+        },
+        {
+            name: 'Рубашка женская',
+            quantity: 3,
+            price: 1500,
+        },
+        {
+            name: 'Зонтик',
+            quantity: 8,
+            price: 700,
+        },
+    ];
+    
+    function countBasketPrice(arr){
+        var basketSum = 0;
+        var basketQuantity = 0;
+        for (var i = 0; i < arr.length; i++){
+            basketSum += arr[i].quantity * arr[i].price;
+            basketQuantity += arr[i].quantity;
+        }
         var $basket = document.getElementById('basket');
         $basket.classList.add('title');
-        $basket.textContent = 'Второе задание. Корзина.';
+        if(basketQuantity != 0){
+            $basket.textContent = 'Второе задание. В корзине ' + basketQuantity + ' товаров на сумму: ' + basketSum;
+        } else {
+            $basket.textContent = 'Корзина пуста';
+        }
+    } 
+
+    var basketSum = countBasketPrice(basket);
+
+
+    // Пример с пустой корзиной
+    var basketNull = [];
+    
+    function countBasketPriceNull(arr){
+        var basketSum = 0;
+        var basketQuantity = 0;
+        for (var i = 0; i < arr.length; i++){
+            basketSum += arr[i].quantity * arr[i].price;
+            basketQuantity += arr[i].quantity;
+        }
+        var $basketNull = document.getElementById('basket-null');
+        $basketNull.classList.add('title');
+        if(basketQuantity != 0){
+            $basketNull.textContent = 'Второе задание. В корзине ' + basketQuantity + ' товаров на сумму: ' + basketSum;
+        } else {
+            $basketNull.textContent = 'Корзина пуста.';
+        }
+    } 
+
+    var basketSum = countBasketPriceNull(basketNull);
+
+    // Catalog
+
+    var $catalog = document.getElementById('catalog');
+    $catalog.classList.add('title');
+    $catalog.textContent = 'Третье задание. Каталог.';
+    
 
         
 
