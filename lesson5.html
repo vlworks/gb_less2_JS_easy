@@ -4,50 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lesson5 - JS</title>
     <style>
-    .board {
-    border: 1px solid black;
-    width: 400px;
-    height: 400px;
-    }
+    
+        table {
+            margin: 15px;
+            border-collapse: collapse;
+        }
 
-    .block {
-    width: 50px;
-    height: 50px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    display: inline-block;
-    }
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
 
-    .block_clrfix {
-    clear: both;
-    }
+        .black {
+            background-color:burlywood;
+        }
 
-    .block_black {
-    background-color: black;
-    }
+        .without_border {
+            border-left: none;
+            border-bottom: none;
+        }
 
-/* table {
-    margin: 15px;
-    border-collapse: collapse;
-}
+        .title {
+            font-weight: bold;
+        }
 
-tr, td {
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    border: 1px solid black;
-    box-sizing: border-box;
-}
-
-.black {
-    background-color: black;
-} */
+        .basket {
+            margin: 15px;
+        }
     </style>
 </head>
 <body>
-    
+    <div class="board" id="board"></div>
+    <div class="basket" id="basket"></div>
 
 
 
@@ -55,34 +48,62 @@ tr, td {
 
 
     <script>
-        // var $block = document.getElementById('block');
-        // var $table = document.createElement('table');
-        // var count = 0;
+        // CHESS BOARD
 
-        // for(var i = 0; i < 8; i++) {
-        //   var $row = document.createElement('tr');
 
-        //   for(var j = 0; j < 8; j++) {
-        //     var $cell = document.createElement('td');
-        //     $cell.textContent = 'cell-' + i + '-' + j;
-        //     $row.appendChild($cell);
-        //   }
+        var $block = document.getElementById('board');
+        $block.classList.add('title');
+        $block.textContent = 'Первое задание. Шахматная доска.';
+        var $table = document.createElement('table');
 
-        //   $table.appendChild($row);
-        // }
+        abc = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+        num = [8, 7, 6, 5, 4, 3, 2, 1]
+        
+        for(var i = 0; i < 9; i++) {
+            var $row = document.createElement('tr');
+            for(var j = 0; j < 9; j++) {
+                var $cell = document.createElement('td');
+                $row.appendChild($cell);
+                //добавляем буквы
+                if(i == 8){
+                    $cell.textContent = abc[j];
+                }
+                //добавляем цифры
+                if(j == 0){
+                    $cell.textContent = num[i];
+                }
+                if(i % 2 == 0 && j % 2 == 0 ){
+                    $cell.classList.add('black');
+                    if(j == 0 || i == 8){
+                        $cell.classList.remove('black');
+                    }
+                }
+                if (i % 2 !== 0){
+                    $cell.classList.add('black');
+                    if(j == 0 || i == 8 || j % 2 == 0){
+                        $cell.classList.remove('black');
+                    }
+                }
+                if(i == 8 && j == 0){
+                    $cell.classList.add('without_border');
+                }
+          }
 
-        // $block.appendChild($table);
-
-        var $board = document.getElementById('board');
-
-        for(var i = 0; i < 49; i++){
-            $block = document.createElement('div');
-            $block.classList.add('block');
-            $board.appendChild($block);
-            if(i % 2 == 0){
-                $block.classList.add('block_black');
-            }
+          $table.appendChild($row);
         }
+
+        $block.appendChild($table);
+
+        // BASKET
+
+        var $basket = document.getElementById('basket');
+        $basket.classList.add('title');
+        $basket.textContent = 'Второе задание. Корзина.';
+
+        
+
+
+
     </script>
 </body>
 </html>
