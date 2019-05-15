@@ -32,15 +32,48 @@
         .title {
             font-weight: bold;
         }
+
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 650px;
+        }
+
+        .card {
+            height: 250px;
+            width: 150px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 5px;
+        }
+
+        .card__img {
+            width: 150px;
+        }
+        .card__link {
+            display: block;
+            text-decoration: none;
+            background-color:chartreuse;
+            width: 100px;
+            margin-left: 25px;
+        }
+        .catalog__quantity {
+            width: 25px;
+            padding-left: 8px;
+        }
         
     </style>
 </head>
 <body>
+    <h3>Задание №1. Шахматная доска.</h3>
     <div class="board" id="board"></div>
     <hr>
+    <h3>Задание №2. Корзина.</h3>
     <div class="basket" id="basket"></div>
     <div class="basket" id="basket-null"></div>
     <hr>
+    <h3>Задание №3. Каталог товаров.</h3>
     <div class="catalog" id="catalog"></div>
 
 
@@ -49,12 +82,10 @@
 
 
     <script>
-        // CHESS BOARD
+// CHESS BOARD. 1
 
 
         var $block = document.getElementById('board');
-        $block.classList.add('title');
-        $block.textContent = 'Первое задание. Шахматная доска.';
         var $table = document.createElement('table');
 
         abc = [' ', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
@@ -95,7 +126,7 @@
 
         $block.appendChild($table);
 
-        // BASKET
+// BASKET. 2
 
     var basket = [
         {
@@ -125,7 +156,7 @@
         var $basket = document.getElementById('basket');
         $basket.classList.add('title');
         if(basketQuantity != 0){
-            $basket.textContent = 'Второе задание. В корзине ' + basketQuantity + ' товаров на сумму: ' + basketSum;
+            $basket.textContent = 'В корзине ' + basketQuantity + ' товаров на сумму: ' + basketSum;
         } else {
             $basket.textContent = 'Корзина пуста';
         }
@@ -134,7 +165,8 @@
     var basketSum = countBasketPrice(basket);
 
 
-    // Пример с пустой корзиной
+// Пример с пустой корзиной
+
     var basketNull = [];
     
     function countBasketPriceNull(arr){
@@ -155,14 +187,40 @@
 
     var basketSum = countBasketPriceNull(basketNull);
 
-    // Catalog
+// Catalog. 3
 
     var $catalog = document.getElementById('catalog');
-    $catalog.classList.add('title');
-    $catalog.textContent = 'Третье задание. Каталог.';
     
+    // <div class="card">
+    //         <img src="https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg" alt="" class="card__img">
+    //         <p class="card__title">25 $</p>
+    //         <a href="#" class="card__link">Buy</a>
+    // </div>
+    
+    for(var i = 0; i < 16; i++){
+    var $card = document.createElement('div');
+    $card.classList.add('card');
+    $catalog.appendChild($card);
+    
+    var $imgCard = document.createElement('img');
+    $imgCard.src = 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg';
+    $imgCard.classList.add('card__img');
+    $card.appendChild($imgCard);
 
-        
+    var $cardTitle = document.createElement('p');
+    $cardTitle.classList.add('card__title');
+    $cardTitle.textContent = '25 $';
+    $card.appendChild($cardTitle);
+
+    var $cardLink = document.createElement('a');
+    $cardLink.href = '#';
+    $cardLink.classList.add('card__link');
+    $cardLink.textContent = 'Buy';
+    $card.appendChild($cardLink);
+}
+
+    
+    
 
 
 
