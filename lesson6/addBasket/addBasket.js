@@ -74,7 +74,12 @@ for(var i = 0; i < product.length; i++){
     $cardLink.href = '#';
     $cardLink.classList.add('card__link');
     $cardLink.textContent = 'Buy';
+    // добавляем атрибут названия к кнопке купить
+    $cardLink.setAttribute('name', product[i].name);
+    
     $card.appendChild($cardLink);
+
+    $cardLink.addEventListener('click', handleBuyClick);
 }
 
 // создаем корзину
@@ -88,16 +93,48 @@ var basket = {
                 price: price,
             },
         );
-    },
-    countBasket: function(){
         var basketSum = 0;
         for(var i = 0; i < this.bProduct.length; i++){
             basketSum += this.bProduct[i].price;
         };
-        console.log('Sum: ' + basketSum);
+        
+        $bSum.textContent = 'Сумма товаров в корзине: ' + basketSum + ' $';
 
-        var $bSum = document.getElementById('bSum');
-        $bSum.textContent = 'Сумма товаров в корзине: ' + basketSum + ' руб.';
+        // список товаров
+
+        $basketList = document.getElementById('basket__list');
+        $basketLi = document.createElement('li');
+        $basketLi.textContent = name + ' ' + price + ' $';
+        $basketList.appendChild($basketLi);
     },
 };
+
+var $bSum = document.getElementById('bSum');
+if(basket.bProduct.length < 1){
+    var message = 'Корзина пустая.';
+}
+$bSum.textContent = message;
+
+// пушим массив корзины через клик по кнопке buy
+
+   function handleBuyClick(event){
+        var productName = event.target.name;
+        var productPrice = getPrice();
+
+        function getPrice(){
+            for(var i = 0; i < product.length; i++){
+                if(productName == product[i].name){
+                    var productPrice = product[i].price;
+                }
+            }
+            return productPrice;
+        }
+
+        basket.push(productName, productPrice);
+    }
+
+
+
+
+
 

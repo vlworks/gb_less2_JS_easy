@@ -39,10 +39,15 @@
             display: block;
             text-decoration: none;
             background-color:chartreuse;
+            border: 1px solid white;
             width: 100px;
             margin-left: 25px;
             height: 25px;
             line-height: 25px;
+        }
+        .card__link:hover {
+            border: 1px solid chartreuse;
+            background-color: white;
         }
         .catalog__quantity {
             width: 25px;
@@ -63,7 +68,10 @@
         </div>
         <div class="basket" id="basket">
     <h2>Корзина:</h2>
-    <h4 id="bSum"></h3>
+    <h4 id="bSum"></h4>
+    <ul class="basket__list" id="basket__list">
+        
+    </ul>
         </div>
     </div>
 
