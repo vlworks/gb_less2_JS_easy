@@ -4,9 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lesson5 - JS</title>
+    <style>
+    
+        .container {
+            display: flex;
+
+        }
+        
+        .title {
+            font-weight: bold;
+        }
+
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 650px;
+        }
+
+        .card {
+            height: 250px;
+            width: 150px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 5px;
+            line-height: 10px;
+        }
+
+        .card__img {
+            width: 150px;
+        }
+        .card__link {
+            display: block;
+            text-decoration: none;
+            background-color:chartreuse;
+            width: 100px;
+            margin-left: 25px;
+            height: 25px;
+            line-height: 25px;
+        }
+        .catalog__quantity {
+            width: 25px;
+            padding-left: 8px;
+        }
+        .basket {
+            border-left: 2px solid black;
+            margin-left: 15px;
+            padding-left: 15px;
+        }
+        
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="catalog" id="catalog">
+
+        </div>
+        <div class="basket" id="basket">
+    <h2>Корзина:</h2>
+    <h4 id="bSum"></h3>
+        </div>
+    </div>
+
+
+
+
+
+
     <script src="addBasket.js"></script>
 </body>
 </html>
