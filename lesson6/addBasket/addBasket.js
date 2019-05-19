@@ -100,8 +100,8 @@ var basket = {
         
         $bSum.textContent = 'Сумма товаров в корзине: ' + basketSum + ' $';
 
-        // список товаров
-
+        // список товаров, позже попробую улучшить, чтобы товары не дублировались, а увеличивался показатель кол-во
+        // надо сделать проверку при пуше массива корзины, есть ли элемент с таким же названием, если есть, .quantity++
         $basketList = document.getElementById('basket__list');
         $basketLi = document.createElement('li');
         $basketLi.textContent = name + ' ' + price + ' $';
