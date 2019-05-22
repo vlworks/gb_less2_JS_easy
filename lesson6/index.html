@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lesson5 - JS</title>
+    <style>
+    
+        .container {
+            display: flex;
+
+        }
+        
+        .title {
+            font-weight: bold;
+        }
+
+        .catalog {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 650px;
+            position: relative;
+        }
+
+        .card {
+            height: 250px;
+            width: 150px;
+            border: 1px solid black;
+            text-align: center;
+            margin: 5px;
+            line-height: 10px;
+        }
+
+        .card__img {
+            width: 150px;
+        }
+        .card__link {
+            display: block;
+            text-decoration: none;
+            background-color:chartreuse;
+            border: 1px solid white;
+            width: 100px;
+            margin-left: 25px;
+            height: 25px;
+            line-height: 25px;
+        }
+        .card__link:hover {
+            border: 1px solid chartreuse;
+            background-color: white;
+        }
+        .catalog__quantity {
+            width: 25px;
+            padding-left: 8px;
+        }
+        .basket {
+            border-left: 2px solid black;
+            margin-left: 15px;
+            padding-left: 15px;
+        }
+
+        .catalog__modal {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            background-color: #fff;
+            left: 150px;
+            top: 150px;
+            display: flex;
+            align-items: center;
+        }
+        .catalog__modal_close{
+            position: absolute;
+            left: auto;
+            right: 10px;
+            top: 5px;
+            cursor: pointer;
+        }
+        .modal__flex {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+        .modal__img {
+            width: 250px;
+            height: 250px;
+        }
+        .modalFlex__left {
+            line-height: 250px;
+            height: 250px;
+            width: 15px;
+            background-color: #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+        .modalFlex__right {
+            line-height: 250px;
+            height: 250px;
+            width: 15px;
+            background-color: #ccc;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="catalog" id="catalog">
+            <!-- <div class="catalog__modal">
+                <div class="catalog__modal_close">Закрыть</div>
+                <div class="modal__flex">
+                    <div class="modalFlex__left"><</div>
+                    <div class="modalFlex__center"><img class="modal__img" src="https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg" alt=""></div>
+                    <div class="modalFlex__right">></div>
+                </div>
+            </div> -->
+        </div>
+        <div class="basket" id="basket">
+            <h2>Корзина:</h2>
+            <h4 id="bSum"></h4>
+            <ul class="basket__list" id="basket__list">
+                
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>
