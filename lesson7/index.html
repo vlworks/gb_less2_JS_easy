@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
-    
+    <div class="catalog" id="catalog"></div>
+    <div class="container">
+        <h1>Корзина:</h1>
+        <details open id="product_list">
+            <summary>Список товаров</summary>
+            <div class="basket" id="basket">Корзина пуста.</div>
+            <div class="basket_list" id="basket_list"></div>
+            <button id="product_button">Далее</button>
+        </details>
+        <details id="delivery_list">
+            <summary>Данные для доставки</summary>
+            <div class="delivery" id="delivery">test</div>
+            <button id="delivery_button">Далее</button>
+        </details>
+        <details id="comment_list">
+            <summary>Комментарии</summary>
+            <div class="comment" id="comment">test</div>
+            <button id="comment_button">Далее</button>&emsp;<button id="start_button">В начало</button>
+        </details>
+    </div>
+    <div class="templates_card" id="templates_card">
+        <div class="card">
+            <img class="card__img">
+            <p class="card__title"></p>
+            <p class="card__price"></p>
+            <button class="card__link"></button>
+        </div>
+    </div>
 </body>
 </html>
