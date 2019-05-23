@@ -146,13 +146,32 @@ function handleBuyClick(event) {
                 quantity: 1,
             });
         }
-        // basket(cart);
+        basket(cart);
+        handleBasketCHANGE();
         
     }
 }
 
 // пишем функцию для вывода содержимого корзины
 // через фор, пока меньше длины рисуем структуру
+
+// выводим корзину
+
+function handleBasketCHANGE () {
+      var $basketTable = document.querySelector('#basket__table');
+
+      for(var i = 0; i < cart.length; i++){
+          var $tr = document.querySelector('#templates_basket').children[0].cloneNode(true);
+
+          $tr.querySelector('.basket__img').textContent = 'test';
+          $tr.querySelector('.basket__name').textContent = cart[i].name;
+          $tr.querySelector('.basket__quantity').textContent = cart[i].quantity;
+          $tr.querySelector('.basket__price').textContent = cart[i].price;
+          $tr.querySelector('.basket__summary').textContent = cart[i].price * cart[i].quantity;
+
+          $basketTable.appendChild($tr);
+      }
+}
 
 
 
