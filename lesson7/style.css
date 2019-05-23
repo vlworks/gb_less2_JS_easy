@@ -93,7 +93,7 @@ summary::-webkit-details-marker {
 }
 
 .basket__quantity, .basket__price, .basket__summary {
-    width: 35px;
+    width: 45px;
     text-align: center;
 }
 

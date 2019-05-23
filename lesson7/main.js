@@ -151,14 +151,12 @@ function handleBuyClick(event) {
 
         var $basketTable = document.querySelector('#basket__table');
         $basketTable.addEventListener('click', handleDeleteClick);
+        $basketTable.addEventListener('change', handleQuantityChange); // сначало было input, но он перехватывает и не дает ввести 2х значное число
         
     }
 }
 
 // пишем функцию для вывода содержимого корзины
-// через фор, пока меньше длины рисуем структуру
-
-// выводим корзину
 
 function handleBasketCHANGE () {
       var $basketTable = document.querySelector('#basket__table');
@@ -175,6 +173,7 @@ function handleBasketCHANGE () {
         $basketMain.querySelector('.basket__del').textContent = 'Удалить';
 
         $basketMain.querySelector('.basket__del').dataset.id = cart[i].id;
+        $basketMain.querySelector('.basket__quantity').dataset.id = cart[i].id;
 
         $basketTable.appendChild($basketMain);
        
@@ -216,6 +215,17 @@ function handleDeleteClick(event){
 
         handleBasketCHANGE();
         basket(cart);
+    }
+}
+
+function handleQuantityChange(event){
+    if(event.target.tagName == 'INPUT'){
+        var idx = findInd(+event.target.dataset.id);
+        cart[idx].quantity = +event.target.value;
+
+        basket(cart);
+        handleBasketCHANGE();
+
     }
 }
 
