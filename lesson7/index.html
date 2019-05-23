@@ -15,7 +15,6 @@
         <details open id="product_list">
             <summary>Список товаров</summary>
             <div class="basket" id="basket">Корзина пуста.</div>
-            <div class="basket_list" id="basket_list"></div>
             <table class="basket__table" id="basket__table">
                 
             </table>
@@ -45,13 +44,16 @@
     
     
     <div class="templates_basket" id="templates_basket">
-        <tr>
-            <td class="basket__img"></td>
-            <td class="basket__name"></td>
-            <td class="basket__quantity"></td>
-            <td class="basket__price"></td>
-            <td class="basket__summary"></td>
-        </tr>
+        <table>
+            <tr class="basket__main">
+                <td><img class="basket__img"></td>
+                <td class="basket__name"></td>
+                <td><input type="number" class="basket__quantity"></td>
+                <td class="basket__price"></td>
+                <td class="basket__summary"></td>
+                <td><button class="basket__del"></button></td>
+            </tr>
+        </table>
     </div>
 </body>
 </html>

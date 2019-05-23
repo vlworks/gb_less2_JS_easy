@@ -41,7 +41,7 @@ var product = [
         quantity: 3,
         price: 1500,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/gshirt1.jpg',
     },
     {
         id: 3,
@@ -49,7 +49,7 @@ var product = [
         quantity: 8,
         price: 2000,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/umbrella1.jpg',
     },
     {
         id: 4,
@@ -57,7 +57,7 @@ var product = [
         quantity: 2,
         price: 3000,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/socks1.jpg',
     },
     {
         id: 5,
@@ -65,7 +65,7 @@ var product = [
         quantity: 3,
         price: 4500,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/cap1.jpg',
     },
     {
         id: 6,
@@ -73,7 +73,7 @@ var product = [
         quantity: 8,
         price: 5000,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/gloves1.jpg',
     },
     {
         id: 7,
@@ -81,7 +81,7 @@ var product = [
         quantity: 3,
         price: 6500,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/skiing1.jpg',
     },
     {
         id: 8,
@@ -89,7 +89,7 @@ var product = [
         quantity: 8,
         price: 7000,
         img: [],
-        imgDefault: 'https://i1.ytimg.com/sh/nFCxMKeqg8k/showposter.jpg',
+        imgDefault: 'img/parachute1.jpg',
     },
 ];
 
@@ -105,7 +105,7 @@ function createCatalog() {
         $templateCard.querySelector('.card__link').dataset.id = product[i].id;
         $templateCard.querySelector('.card__link').dataset.name = product[i].name;
         $templateCard.querySelector('.card__link').dataset.price = product[i].price;
-        $templateCard.querySelector('.card__link').dataset.imgDefault = product[i].imgDefault;
+        $templateCard.querySelector('.card__link').dataset.imgdefault = product[i].imgDefault;
 
         $catalog.appendChild($templateCard);
     }
@@ -142,12 +142,15 @@ function handleBuyClick(event) {
                 id: +event.target.dataset.id,
                 name: event.target.dataset.name,
                 price: +event.target.dataset.price,
-                img: event.target.dataset.imgDefault,
                 quantity: 1,
+                img: event.target.dataset.imgdefault,
             });
         }
         basket(cart);
         handleBasketCHANGE();
+
+        var $basketTable = document.querySelector('#basket__table');
+        $basketTable.addEventListener('click', handleDeleteClick);
         
     }
 }
@@ -159,18 +162,27 @@ function handleBuyClick(event) {
 
 function handleBasketCHANGE () {
       var $basketTable = document.querySelector('#basket__table');
-
+      $basketTable.innerHTML = '';
+      
       for(var i = 0; i < cart.length; i++){
-          var $tr = document.querySelector('#templates_basket').children[0].cloneNode(true);
+        var $basketMain = document.querySelector('.basket__main').cloneNode(true);
 
-          $tr.querySelector('.basket__img').textContent = 'test';
-          $tr.querySelector('.basket__name').textContent = cart[i].name;
-          $tr.querySelector('.basket__quantity').textContent = cart[i].quantity;
-          $tr.querySelector('.basket__price').textContent = cart[i].price;
-          $tr.querySelector('.basket__summary').textContent = cart[i].price * cart[i].quantity;
+        $basketMain.querySelector('.basket__img').src = cart[i].img;
+        $basketMain.querySelector('.basket__name').textContent = cart[i].name;
+        $basketMain.querySelector('.basket__quantity').value = cart[i].quantity;
+        $basketMain.querySelector('.basket__price').textContent = cart[i].price;
+        $basketMain.querySelector('.basket__summary').textContent = cart[i].price * cart[i].quantity;
+        $basketMain.querySelector('.basket__del').textContent = 'Удалить';
 
-          $basketTable.appendChild($tr);
+        $basketMain.querySelector('.basket__del').dataset.id = cart[i].id;
+
+        $basketTable.appendChild($basketMain);
+       
       }
+     
+      
+      
+      
 }
 
 
@@ -196,6 +208,17 @@ function basket(arr) {
     
 }
 
+function handleDeleteClick(event){
+    if(event.target.tagName == 'BUTTON'){
+        
+        var idx = findInd(+event.target.dataset.id);
+        cart.splice(idx, 1);
+
+        handleBasketCHANGE();
+        basket(cart);
+    }
+}
+
 
 function init() {
 
@@ -213,6 +236,8 @@ function init() {
 
     var $catalog = document.querySelector('#catalog');
     $catalog.addEventListener('click', handleBuyClick);
+
+    
 
     
         

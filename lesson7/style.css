@@ -4,6 +4,7 @@
 
 .templates_card, .template_basket {
     display: none;
+    
 }
 
 
@@ -39,6 +40,7 @@ summary::-webkit-details-marker {
 
 .card__img {
     width: 150px;
+    height: 150px;
 }
 .card__link {
     display: block;
@@ -74,6 +76,28 @@ summary::-webkit-details-marker {
 }
 
 .basket__table td {
-    border: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     padding: 10px 5px;
 }
+
+.basket__img {
+    width: 50px;
+    height: 50px;
+}
+
+.basket__name {
+    height: 50px;
+    width: 150px;
+    text-align: center;
+}
+
+.basket__quantity, .basket__price, .basket__summary {
+    width: 35px;
+    text-align: center;
+}
+
+.basket__del {
+    cursor: pointer;
+}
+
