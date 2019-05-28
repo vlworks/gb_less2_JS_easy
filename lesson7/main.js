@@ -161,7 +161,7 @@ function handleBuyClick(event) {
 function handleBasketCHANGE () {
       var $basketTable = document.querySelector('#basket__table');
       $basketTable.innerHTML = '';
-      
+            
       for(var i = 0; i < cart.length; i++){
         var $basketMain = document.querySelector('.basket__main').cloneNode(true);
 
